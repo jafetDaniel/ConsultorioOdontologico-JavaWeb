@@ -1,12 +1,16 @@
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="logica.Persona"%>
+<%@page import="logica.Personas"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="../header_views.jsp"%>
   <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Ver Personas</h1>
+                    <div class="d-sm-flex align-items-center mb-4">
+                        <img src="../../img/dentist.png" alt="dentist" width="50px" height="50px" style="margin-right: 10px">    
+                        <h1 class="h3 mb-2 text-gray-800">Ver Personas</h1>
+                    </div>
+                  
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -28,12 +32,12 @@
                                         </tr>
                                     </thead>
                                     <% 
-                                      List<Persona> listaPersonas = (List) request.getSession().getAttribute("listaPersonas");//obtener una variable de la session
+                                      List<Personas> listaPersonas = (List) request.getSession().getAttribute("listaPersonas");//obtener una variable de la session
                                       SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy"); //dar formato a fecha
                                     %>
                                     <tbody>
                                         <% 
-                                        for (Persona per: listaPersonas) {  
+                                        for (Personas per: listaPersonas) {  
                                         %>
                                         <tr>
                                             <td><%=per.getId()%></td>
@@ -42,7 +46,11 @@
                                             <td><%=per.getApellido()%></td>
                                             <td><%=per.getTelefono()%></td>
                                             <td><%=per.getDireccion()%></td>
-                                            <td><%=formato.format(per.getFecha_nac())%></td>
+                                            <td>
+                                                <% if (per.getFecha_nac() != null) { %>
+                                                <%=formato.format(per.getFecha_nac())%>
+                                                <% } %>
+                                            </td>
                                             
                                             <td style="display:flex; width:230px;">
                                                 <div style="margin-left: 5px;">

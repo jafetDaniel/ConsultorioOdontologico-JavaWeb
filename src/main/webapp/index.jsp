@@ -3,7 +3,8 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <div class="d-sm-flex align-items-center mb-4">
+                        <img src="img/dentist.png" alt="dentist" width="50px" height="50px" style="margin-right: 10px">
                         <h1 class="h3 mb-0 text-gray-800">Clínica Odontológica</h1>                     
                     </div>
                     

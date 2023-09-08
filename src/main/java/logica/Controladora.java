@@ -13,50 +13,50 @@ import persistencia.ControladoraPersistencia;
 public class Controladora {
     ControladoraPersistencia controlPersis = new ControladoraPersistencia();
     
-     public boolean comprobarIngreso(String usuario, String password) { //para login
+     public Usuarios comprobarIngreso(String nombre_usuario, String password) { //para login
         
-         boolean ingreso = false;
-         List <Usuario> listaUsuarios = new ArrayList<Usuario>();
+         Usuarios ingreso = null;
+         List <Usuarios> listaUsuarios = new ArrayList<Usuarios>();
          listaUsuarios = controlPersis.getUsuarios();
          
-         for (Usuario usu : listaUsuarios) {
-             if (usu.getNombre_usuario().equals(usuario) ) {
+         for (Usuarios usu : listaUsuarios) {
+             if (usu.getNombre_usuario().equals(nombre_usuario) ) {
                  if (usu.getContrasenia().equals(password)) {
-                     ingreso = true;
-                     //break;
+                     ingreso = usu;
+                     break;
                  }
              }
          }
-         System.out.println(ingreso);
+        // System.out.println(ingreso);
          return ingreso;
     }
     // USUARIOS
     public void crearUsuario(String nombre_usuario, String contrasenia, String rol){
-        Usuario usu = new Usuario();        
+        Usuarios usu = new Usuarios();        
         usu.setNombre_usuario(nombre_usuario);
         usu.setContrasenia(contrasenia);
         usu.setRol(rol);
         
         controlPersis.crearUsuario(usu);
     }
-    public List<Usuario> getUsuarios() {
+    public List<Usuarios> getUsuarios() {
         return controlPersis.getUsuarios();
     }
     public void borrarUsuario(int id) {
         controlPersis.borrarUsuario(id);
     }
-    public Usuario traerUsuario(int id) {
+    public Usuarios traerUsuario(int id) {
         return controlPersis.traerUsuario(id);
     }
-    public void editarUsuario(Usuario usu) {
+    public void editarUsuario(Usuarios usu) {
         controlPersis.editarUsuario(usu);
     }
     
     //PERSONAS
     public void crearPersona(String dni, String nombre,String apellido,String telefono, String direccion, String fecha_nac){
-        Persona per = new Persona();
+        Personas per = new Personas();
         
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd"); //formato actual
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd"); //formato actual (y de BD)
         Date date = null;
         try {
             date = formato.parse(fecha_nac); //convirtiendo a date
@@ -74,17 +74,40 @@ public class Controladora {
         
         controlPersis.crearPersona(per);
     }
-    public List<Persona> getPersonas() {
+    public List<Personas> getPersonas() {
         return controlPersis.getPersonas();
     }
     public void borrarPersona(int id) {
         controlPersis.borrarPersona(id);
     }
-    public Persona traerPersona(int id) {
+    public Personas traerPersona(int id) {
         return controlPersis.traerPersona(id);
     }
-    public void editarPersona(Persona per) {
+    public void editarPersona(Personas per) {
         controlPersis.editarPersona(per);
+    }
+    
+    
+    //HORARIO
+    public void crearHorario(String horario_inicio, String horario_fin){
+        Horarios horario = new Horarios();
+        
+        horario.setHorario_inicio(horario_inicio);
+        horario.setHorario_fin(horario_fin);
+        
+        controlPersis.crearHorario(horario);
+    }
+    public List<Horarios> getHorarios() {
+        return controlPersis.getHorarios();
+    }
+    public void borrarHorario(int id) {
+        controlPersis.borrarHorario(id);
+    }
+    public Horarios traerHorario(int id) {
+        return controlPersis.traerHorario(id);
+    }
+    public void editarHorario(Horarios horario) {
+        controlPersis.editarHorario(horario);
     }
    
 }

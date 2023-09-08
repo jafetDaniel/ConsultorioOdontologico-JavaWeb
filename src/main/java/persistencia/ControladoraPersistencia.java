@@ -3,26 +3,26 @@ package persistencia;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import logica.Odontologo;
-import logica.Persona;
-import logica.Usuario;
+import logica.Horarios;
+import logica.Personas;
+import logica.Usuarios;
 import persistencia.exceptions.NonexistentEntityException;
 
 public class ControladoraPersistencia {
-    HorarioJpaController horaJPA = new HorarioJpaController();
-    OdontologoJpaController odontoJPA = new OdontologoJpaController();
-    PacienteJpaController pacJPA = new PacienteJpaController();
-    PersonaJpaController perJPA = new PersonaJpaController();
-    ResponsableJpaController respJPA = new ResponsableJpaController();
-    SecretarioJpaController secreJPA = new SecretarioJpaController();
-    TurnoJpaController turnJPA = new TurnoJpaController();
-    UsuarioJpaController usuJPA = new UsuarioJpaController();
+    HorariosJpaController horaJPA = new HorariosJpaController();
+    OdontologosJpaController odontoJPA = new OdontologosJpaController();
+    PacientesJpaController pacJPA = new PacientesJpaController();
+    PersonasJpaController perJPA = new PersonasJpaController();
+    ResponsablesJpaController respJPA = new ResponsablesJpaController();
+    SecretariosJpaController secreJPA = new SecretariosJpaController();
+    TurnosJpaController turnJPA = new TurnosJpaController();
+    UsuariosJpaController usuJPA = new UsuariosJpaController();
 
-    public void crearUsuario(Usuario usu) {
+    public void crearUsuario(Usuarios usu) {
         usuJPA.create(usu);
     }
-    public List<Usuario> getUsuarios() {
-        return usuJPA.findUsuarioEntities();
+    public List<Usuarios> getUsuarios() {
+        return usuJPA.findUsuariosEntities();
     }
     public void borrarUsuario(int id) {
         try {
@@ -31,10 +31,10 @@ public class ControladoraPersistencia {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public Usuario traerUsuario(int id) {
-        return usuJPA.findUsuario(id);
+    public Usuarios traerUsuario(int id) {
+        return usuJPA.findUsuarios(id);
     }
-    public void editarUsuario(Usuario usu) {
+    public void editarUsuario(Usuarios usu) {
         try {
             usuJPA.edit(usu);
         } catch (Exception ex) {
@@ -44,11 +44,11 @@ public class ControladoraPersistencia {
     
     
     //PERSONAS
-     public void crearPersona(Persona per) {
+     public void crearPersona(Personas per) {
         perJPA.create(per);
     }
-    public List<Persona> getPersonas() {
-        return perJPA.findPersonaEntities();
+    public List<Personas> getPersonas() {
+        return perJPA.findPersonasEntities();
     }
     public void borrarPersona(int id) {
         try {
@@ -57,12 +57,38 @@ public class ControladoraPersistencia {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public Persona traerPersona(int id) {
-        return perJPA.findPersona(id);
+    public Personas traerPersona(int id) {
+        return perJPA.findPersonas(id);
     }
-    public void editarPersona(Persona per) {
+    public void editarPersona(Personas per) {
         try {
             perJPA.edit(per);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    //HORARIO
+     public void crearHorario(Horarios horario) {
+        horaJPA.create(horario);
+    }
+    public List<Horarios> getHorarios() {
+        return horaJPA.findHorariosEntities();
+    }
+    public void borrarHorario(int id) {
+        try {
+            horaJPA.destroy(id);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public Horarios traerHorario(int id) {
+        return horaJPA.findHorarios(id);
+    }
+    public void editarHorario(Horarios horario) {
+        try {
+            horaJPA.edit(horario);
         } catch (Exception ex) {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }

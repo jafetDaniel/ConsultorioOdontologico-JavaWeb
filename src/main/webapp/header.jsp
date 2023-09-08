@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     HttpSession misession = request.getSession(); //obtener sesion
-    String nombre_usuario = (String) request.getSession().getAttribute("usuario"); //obtener el nombre de usuario de la sesion
+    String nombre_usuario = (String) misession.getAttribute("nombre_usuario"); //obtener el objeto usuario de la sesion
     if (nombre_usuario == null) {
             response.sendRedirect("login.jsp");
         }
@@ -88,6 +88,25 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="SvPersonas">Ver personas</a>
                         <a class="collapse-item" href="views/personas/altaPersona.jsp">Nueva persona</a>
+                    </div>
+                </div>
+            </li>
+            
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            
+             <!-- Nav Item - PERSONAS -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseHorarios"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-solid fa-user"></i>
+                    <span>Horarios</span>
+                </a>
+                <div id="collapseHorarios" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="SvHorarios">Ver horarios</a>
+                        <a class="collapse-item" href="views/horarios/altaHorario.jsp">Nuevo horario</a>
                     </div>
                 </div>
             </li>

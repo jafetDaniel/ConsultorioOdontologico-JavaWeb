@@ -7,7 +7,7 @@
                         <h1 class="h3 mb-0 text-gray-800">Alta Odontólogo</h1>
                     </div>
                     
-                    <form action="#">
+                    <form action="">
                         <div class="mb-3">
                             <label class="form-label">DNI</label>
                             <input type="text" class="form-control">

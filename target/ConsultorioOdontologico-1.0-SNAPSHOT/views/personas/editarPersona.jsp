@@ -1,5 +1,5 @@
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="logica.Persona"%>
+<%@page import="logica.Personas"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="../header_views.jsp"%>
                 <!-- Begin Page Content -->
@@ -8,7 +8,7 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Editar Persona</h1>
                     </div>
-                    <%  Persona per = (Persona) request.getSession().getAttribute("perEditar"); 
+                    <%  Personas per = (Personas) request.getSession().getAttribute("perEditar"); 
                         SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy"); //dar formato a fecha
                     %>
                     
@@ -34,9 +34,12 @@
                             <input type="text" class="form-control" name="direccion" value="<%=per.getDireccion()%>" required  style="width: 500px">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Fecha de Nacimiento (Debe ser en formato: dd-mm-aaaa, Ejemplo: 28-08-2023)</label>
+                            <label class="form-label">Fecha de nacimiento</label>
                             <div>
-                                <input type="text" class="form-control" name="fecha_nac" value="<%=formato.format(per.getFecha_nac())%>" placeholder="dd-MM-aaaa" style="width: 160px; display: inline;">
+                                <% if (per.getFecha_nac() != null) { %>
+                                   <label class="form-label"><%=formato.format(per.getFecha_nac())%></label>
+                                <% } %>
+                                <input type="date" class="form-control" name="fecha_nac" style="width: 160px; display:inline;">
                             </div>
                         </div>
                         <div class="mb-3">

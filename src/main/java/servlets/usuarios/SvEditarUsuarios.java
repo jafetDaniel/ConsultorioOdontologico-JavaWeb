@@ -1,7 +1,6 @@
 package servlets.usuarios;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import logica.Controladora;
-import logica.Usuario;
+import logica.Usuarios;
 
 @WebServlet(name = "SvEditarUsuarios", urlPatterns = {"/SvEditarUsuarios"})
 public class SvEditarUsuarios extends HttpServlet {
@@ -24,7 +23,7 @@ public class SvEditarUsuarios extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          int id = Integer.parseInt(request.getParameter("id_edit")); //obetener id del form
-         Usuario usu = control.traerUsuario(id); //obtener datos del usuario de la bd
+         Usuarios usu = control.traerUsuario(id); //obtener datos del usuario de la bd
          
          HttpSession misesion = request.getSession(); //llamando a la sesion
          misesion.setAttribute("usuEditar", usu); //establecer variable en la sesion
@@ -36,17 +35,24 @@ public class SvEditarUsuarios extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {    
+        
         String nombre_usuario = request.getParameter("nombre_usuario"); //obteniendo valores del form
         String contrasenia = request.getParameter("contrasenia");
         String rol = request.getParameter("rol");
         
-        Usuario usu = (Usuario) request.getSession().getAttribute("usuEditar");
+        Usuarios usu = (Usuarios) request.getSession().getAttribute("usuEditar"); //obteniedo datos anteriores
+        
+        if (nombre_usuario != "" && contrasenia != "" && rol != "" ){ 
+          
         usu.setNombre_usuario(nombre_usuario); //cambiando valores de la variable de sesion
         usu.setContrasenia(contrasenia);
         usu.setRol(rol);
         
        control.editarUsuario(usu); //para hacer edicion en la bd
-       response.sendRedirect("SvUsuarios");
+        response.sendRedirect("SvUsuarios");
+       }
+      
+       
     }
 
 

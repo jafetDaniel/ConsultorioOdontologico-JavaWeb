@@ -1,4 +1,4 @@
-<%@page import="logica.Usuario"%>
+<%@page import="logica.Usuarios"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="../header_views.jsp"%>
                 <!-- Begin Page Content -->
@@ -7,7 +7,7 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Editar Usuario</h1>
                     </div>
-                    <%  Usuario usu = (Usuario) request.getSession().getAttribute("usuEditar"); %>
+                    <%  Usuarios usu = (Usuarios) request.getSession().getAttribute("usuEditar"); %>
                     
                     <form action="../../SvEditarUsuarios" method="POST">
                         <div class="mb-3">

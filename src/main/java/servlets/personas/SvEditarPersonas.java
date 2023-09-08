@@ -1,7 +1,6 @@
 package servlets.personas;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -14,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import logica.Controladora;
-import logica.Persona;
+import logica.Personas;
 
 @WebServlet(name = "SvEditarPersonas", urlPatterns = {"/SvEditarPersonas"})
 public class SvEditarPersonas extends HttpServlet {
@@ -29,7 +28,8 @@ public class SvEditarPersonas extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          int id = Integer.parseInt(request.getParameter("id_edit")); //obetener id del form
-         Persona per = control.traerPersona(id);
+         
+         Personas per = control.traerPersona(id);
          
          HttpSession misesion = request.getSession(); //llamando a la sesion
          misesion.setAttribute("perEditar", per); //establecer variable en la sesion
@@ -49,24 +49,33 @@ public class SvEditarPersonas extends HttpServlet {
         String direccion = request.getParameter("direccion");
         String fecha_nac = request.getParameter("fecha_nac");
         
-        Persona per = (Persona) request.getSession().getAttribute("perEditar");//obteniedo datos anteriores
-        
-        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy"); //formato de fecha
+        Personas per = (Personas) request.getSession().getAttribute("perEditar");//obteniedo datos anteriores
         Date date = null;
-        try {
-            date = formato.parse(fecha_nac); //convirtiendo a date
-        } catch (ParseException ex) {
-            Logger.getLogger(Controladora.class.getName()).log(Level.SEVERE, null, ex);
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd"); //formato actual (y de BD)
+
+
+            if (fecha_nac.equals("")) { //si no se cambio el campo fecha
+                date = per.getFecha_nac(); //obtener y asignar la anterior
+            } else {
+                try {
+                    date = formato.parse(fecha_nac); //convirtiendo a date y asignando la nueva facha
+                } catch (ParseException ex) {
+                    Logger.getLogger(Controladora.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+        if (dni != "" && nombre != "" && apellido != "" && telefono != "" && direccion != "" && date != null) {
+            per.setDni(dni); //cambiando valores SOLO en la variable de sesion
+            per.setNombre(nombre);
+            per.setApellido(apellido);
+            per.setTelefono(telefono);
+            per.setDireccion(direccion);
+            per.setFecha_nac(date);
+
+            control.editarPersona(per); //para hacer edicion en la bd
+            response.sendRedirect("SvPersonas");
         }
-        per.setDni(dni); //cambiando valores SOLO en la variable de sesion
-        per.setNombre(nombre);
-        per.setApellido(apellido);
-        per.setTelefono(telefono);
-        per.setDireccion(direccion);
-        per.setFecha_nac(date);
-        
-       control.editarPersona(per); //para hacer edicion en la bd
-       response.sendRedirect("SvPersonas");
+    
     }
 
 
