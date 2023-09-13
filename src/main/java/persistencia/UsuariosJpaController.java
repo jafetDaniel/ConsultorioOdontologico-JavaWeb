@@ -26,13 +26,14 @@ public class UsuariosJpaController implements Serializable {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;
+    
+    
+    public UsuariosJpaController() {
+        emf = Persistence.createEntityManagerFactory("ConsultorioOdontologico_PU");
+    }
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
-    }
-    
-     public UsuariosJpaController() {
-        emf = Persistence.createEntityManagerFactory("ConsultorioOdontologico_PU");
     }
 
     public void create(Usuarios usuarios) {

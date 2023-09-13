@@ -59,7 +59,7 @@ public class ResponsablesJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                int id = responsables.getId();
+                int id = responsables.getId_responsable();
                 if (findResponsables(id) == null) {
                     throw new NonexistentEntityException("The responsables with id " + id + " no longer exists.");
                 }
@@ -80,7 +80,7 @@ public class ResponsablesJpaController implements Serializable {
             Responsables responsables;
             try {
                 responsables = em.getReference(Responsables.class, id);
-                responsables.getId();
+                responsables.getId_responsable();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The responsables with id " + id + " no longer exists.", enfe);
             }

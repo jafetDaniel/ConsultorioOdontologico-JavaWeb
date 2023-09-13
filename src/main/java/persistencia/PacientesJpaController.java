@@ -27,7 +27,7 @@ public class PacientesJpaController implements Serializable {
     }
     private EntityManagerFactory emf = null;
     
-     public PacientesJpaController() {
+    public PacientesJpaController() {
         emf = Persistence.createEntityManagerFactory("ConsultorioOdontologico_PU");
     }
 
@@ -59,7 +59,7 @@ public class PacientesJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                int id = pacientes.getId();
+                int id = pacientes.getId_paciente();
                 if (findPacientes(id) == null) {
                     throw new NonexistentEntityException("The pacientes with id " + id + " no longer exists.");
                 }
@@ -80,7 +80,7 @@ public class PacientesJpaController implements Serializable {
             Pacientes pacientes;
             try {
                 pacientes = em.getReference(Pacientes.class, id);
-                pacientes.getId();
+                pacientes.getId_paciente();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The pacientes with id " + id + " no longer exists.", enfe);
             }

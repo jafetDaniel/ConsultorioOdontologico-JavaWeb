@@ -1,13 +1,8 @@
 package logica;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import persistencia.ControladoraPersistencia;
 
 public class Controladora {
@@ -53,24 +48,15 @@ public class Controladora {
     }
     
     //PERSONAS
-    public void crearPersona(String dni, String nombre,String apellido,String telefono, String direccion, String fecha_nac){
+    public void crearPersona(String dni, String nombre,String apellido,String telefono, String direccion, Date fecha_nac){
         Personas per = new Personas();
-        
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd"); //formato actual (y de BD)
-        Date date = null;
-        try {
-            date = formato.parse(fecha_nac); //convirtiendo a date
- 
-        } catch (ParseException ex) {
-            Logger.getLogger(Controladora.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+    
         per.setDni(dni);
         per.setNombre(nombre);
         per.setApellido(apellido);
         per.setTelefono(telefono);
         per.setDireccion(direccion);
-        per.setFecha_nac(date);
+        per.setFecha_nac(fecha_nac);
         
         controlPersis.crearPersona(per);
     }
@@ -88,7 +74,7 @@ public class Controladora {
     }
     
     
-    //HORARIO
+    //HORARIOS
     public void crearHorario(String horario_inicio, String horario_fin){
         Horarios horario = new Horarios();
         
@@ -108,6 +94,106 @@ public class Controladora {
     }
     public void editarHorario(Horarios horario) {
         controlPersis.editarHorario(horario);
+    }
+    
+    
+     //RESPONSABLES
+    public void crearResponsable(String tipo_resp, Personas persona){
+        Responsables resp = new Responsables();
+        
+        resp.setTipo_resp(tipo_resp);
+        resp.setPersona(persona);
+        
+        controlPersis.crearResponsable(resp);
+    }
+    public List<Responsables> getResponsables() {
+        return controlPersis.getResponsables();
+    }
+    public void borrarResponsable(int id) {
+        controlPersis.borrarResponsable(id);
+    }
+    public Responsables traerResponsable(int id) {
+        return controlPersis.traerResponsable(id);
+    }
+    public void editarResponsable(Responsables resp) {
+        controlPersis.editarResponsable(resp);
+    }
+    
+    
+      //TURNOS
+    public void crearTurno(Date fecha_turno, String hora_turno, String tratamiento, Odontologos odonto, Pacientes pacient){
+        Turnos turno = new Turnos();
+        
+        turno.setFecha_turno(fecha_turno);
+        turno.setHora_turno(hora_turno);
+        turno.setTratamiento(tratamiento);
+        turno.setOdonto(odonto);
+        turno.setPacient(pacient);
+        
+        controlPersis.crearTurno(turno);
+    }
+    public List<Turnos> getTurnos() {
+        return controlPersis.getTurnos();
+    }
+    public void borrarTurno(int id) {
+        controlPersis.borrarTurno(id);
+    }
+    public Turnos traerTurno(int id) {
+        return controlPersis.traerTurno(id);
+    }
+    public void editarTurno(Turnos turno) {
+        controlPersis.editarTurno(turno);
+    }
+    
+    
+      //ODONTOLOGOS
+    public void crearOdontologo(String especialidad, Usuarios usuario, Horarios horario, Personas persona){
+        Odontologos odonto = new Odontologos();
+        
+        odonto.setEspecialidad(especialidad);
+        //odonto.setLista_turno(lista_turno);
+        odonto.setUsuario(usuario);
+        odonto.setHorario(horario);
+        odonto.setPersona(persona);
+        
+        controlPersis.crearOdontologo(odonto);
+    }
+    public List<Odontologos> getOdontologos() {
+        return controlPersis.getOdontologos();
+    }
+    public void borrarOdontologo(int id) {
+        controlPersis.borrarOdontologo(id);
+    }
+    public Odontologos traerOdontologo(int id) {
+        return controlPersis.traerOdontologo(id);
+    }
+    public void editarOdontologo(Odontologos odonto) {
+        controlPersis.editarOdontologo(odonto);
+    }
+    
+    //PACIENTES
+    public void crearPaciente(boolean tiene_SM, String tipo_sangre, Responsables responsable, List<Turnos> lista_turnos, Personas persona){
+        Pacientes pacient = new Pacientes();
+        
+        pacient.setTiene_SM(tiene_SM);
+        pacient.setTipo_sangre(tipo_sangre);
+        pacient.setResponsable(responsable);
+        pacient.setLista_turnos(lista_turnos);
+        pacient.setPersona(persona);
+        
+        controlPersis.crearPaciente(pacient);
+    }
+    public List<Pacientes> getPacientes() {
+        return controlPersis.getPacientes();
+    }
+    public void borrarPaciente(int id) {
+        controlPersis.borrarPaciente(id);
+    }
+    public Pacientes traerPaciente(int id) {
+        return controlPersis.traerPaciente(id);
+    }
+    public void editarPaciente(Pacientes pacient) {
+        controlPersis.editarPaciente(pacient);
     }
    
 }

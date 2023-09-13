@@ -4,7 +4,11 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import logica.Horarios;
+import logica.Odontologos;
+import logica.Pacientes;
 import logica.Personas;
+import logica.Responsables;
+import logica.Turnos;
 import logica.Usuarios;
 import persistencia.exceptions.NonexistentEntityException;
 
@@ -14,8 +18,8 @@ public class ControladoraPersistencia {
     PacientesJpaController pacJPA = new PacientesJpaController();
     PersonasJpaController perJPA = new PersonasJpaController();
     ResponsablesJpaController respJPA = new ResponsablesJpaController();
-    SecretariosJpaController secreJPA = new SecretariosJpaController();
-    TurnosJpaController turnJPA = new TurnosJpaController();
+    //SecretariosJpaController secreJPA = new SecretariosJpaController();
+    TurnosJpaController turnoJPA = new TurnosJpaController();
     UsuariosJpaController usuJPA = new UsuariosJpaController();
 
     public void crearUsuario(Usuarios usu) {
@@ -69,7 +73,7 @@ public class ControladoraPersistencia {
     }
     
     
-    //HORARIO
+    //HORARIOS
      public void crearHorario(Horarios horario) {
         horaJPA.create(horario);
     }
@@ -95,6 +99,107 @@ public class ControladoraPersistencia {
     }
     
     
+     //RESPONSABLES
+     public void crearResponsable(Responsables resp) {
+        respJPA.create(resp);
+    }
+    public List<Responsables> getResponsables() {
+        return respJPA.findResponsablesEntities();
+    }
+    public void borrarResponsable(int id) {
+        try {
+            respJPA.destroy(id);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public Responsables traerResponsable(int id) {
+        return respJPA.findResponsables(id);
+    }
+    public void editarResponsable(Responsables resp) {
+        try {
+            respJPA.edit(resp);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
+    
+     //TURNOS
+     public void crearTurno(Turnos turno) {
+        turnoJPA.create(turno);
+    }
+    public List<Turnos> getTurnos() {
+        return turnoJPA.findTurnosEntities();
+    }
+    public void borrarTurno(int id) {
+        try {
+            turnoJPA.destroy(id);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public Turnos traerTurno(int id) {
+        return turnoJPA.findTurnos(id);
+    }
+    public void editarTurno(Turnos turno) {
+        try {
+            turnoJPA.edit(turno);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+     //Odontologos
+     public void crearOdontologo(Odontologos odonto) {
+        odontoJPA.create(odonto);
+    }
+    public List<Odontologos> getOdontologos() {
+        return odontoJPA.findOdontologosEntities();
+    }
+    public void borrarOdontologo(int id) {
+        try {
+            odontoJPA.destroy(id);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public Odontologos traerOdontologo(int id) {
+        return odontoJPA.findOdontologos(id);
+    }
+    public void editarOdontologo(Odontologos odonto) {
+        try {
+            odontoJPA.edit(odonto);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    //Pacientes
+     public void crearPaciente(Pacientes pacient) {
+        pacJPA.create(pacient);
+    }
+    public List<Pacientes> getPacientes() {
+        return pacJPA.findPacientesEntities();
+    }
+    public void borrarPaciente(int id) {
+        try {
+            pacJPA.destroy(id);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public Pacientes traerPaciente(int id) {
+        return pacJPA.findPacientes(id);
+    }
+    public void editarPaciente(Pacientes pacient) {
+        try {
+            pacJPA.edit(pacient);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
   
 }

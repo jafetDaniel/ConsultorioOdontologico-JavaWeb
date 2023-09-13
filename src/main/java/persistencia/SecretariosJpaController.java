@@ -27,6 +27,7 @@ public class SecretariosJpaController implements Serializable {
     }
     private EntityManagerFactory emf = null;
     
+    
     public SecretariosJpaController() {
         emf = Persistence.createEntityManagerFactory("ConsultorioOdontologico_PU");
     }
@@ -59,7 +60,7 @@ public class SecretariosJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                int id = secretarios.getId();
+                int id = secretarios.getId_secretario();
                 if (findSecretarios(id) == null) {
                     throw new NonexistentEntityException("The secretarios with id " + id + " no longer exists.");
                 }
@@ -80,7 +81,7 @@ public class SecretariosJpaController implements Serializable {
             Secretarios secretarios;
             try {
                 secretarios = em.getReference(Secretarios.class, id);
-                secretarios.getId();
+                secretarios.getId_secretario();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The secretarios with id " + id + " no longer exists.", enfe);
             }

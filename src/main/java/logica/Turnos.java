@@ -30,18 +30,19 @@ public class Turnos implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_pacient")
     private Pacientes pacient;
-    
 
     public Turnos() {
     }
-
-    public Turnos(int id_turno, Date fecha_turno, String hora_turno, String tratamiento) {
+    
+    public Turnos(int id_turno, Date fecha_turno, String hora_turno, String tratamiento, Odontologos odonto, Pacientes pacient) {
         this.id_turno = id_turno;
         this.fecha_turno = fecha_turno;
         this.hora_turno = hora_turno;
         this.tratamiento = tratamiento;
+        this.odonto = odonto;
+        this.pacient = pacient;
     }
-    
+
     public int getId_turno() {
         return id_turno;
     }
@@ -73,5 +74,23 @@ public class Turnos implements Serializable {
     public void setTratamiento(String tratamiento) {
         this.tratamiento = tratamiento;
     }
+
+    public Odontologos getOdonto() {
+        return odonto;
+    }
+
+    public void setOdonto(Odontologos odonto) {
+        this.odonto = odonto;
+    }
+
+    public Pacientes getPacient() {
+        return pacient;
+    }
+
+    public void setPacient(Pacientes pacient) {
+        this.pacient = pacient;
+    }
+    
+    
     
 }

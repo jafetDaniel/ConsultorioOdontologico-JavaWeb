@@ -80,7 +80,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePersonas"
                     aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-solid fa-user"></i>
+                    <i class="fas fa-solid fa-users"></i>
                     <span>Personas</span>
                 </a>
                 <div id="collapsePersonas" class="collapse" aria-labelledby="headingUtilities"
@@ -92,14 +92,78 @@
                 </div>
             </li>
             
+            <!-- Nav Item - RESPONSABLES -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseResponsables"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-solid fa-user-secret"></i>
+                    <span>Responsables</span>
+                </a>
+                <div id="collapseResponsables" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="../../SvResponsables">Ver responsables</a>
+                        <a class="collapse-item" href="../responsables/altaResponsable.jsp">Nuevo responsable</a>
+                    </div>
+                </div>
+            </li>
+            
+            <!-- Nav Item - SECRETARIOS -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSecretarios"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-solid fa-briefcase"></i>
+                    <span>Secreatarios</span>
+                </a>
+                <div id="collapseSecretarios" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="../../SvSecretarios">Ver secretarios</a>
+                        <a class="collapse-item" href="../secretarios/altaSecretario.jsp">Nuevo secretario</a>
+                    </div>
+                </div>
+            </li>
+            
+             <!-- Nav Item - Odontologos -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOdontologos"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-solid fa-user-nurse"></i>
+                    <span>Odontólogos</span>
+                </a>
+                <div id="collapseOdontologos" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="../../SvOdontologos">Ver odontólogos</a>
+                        <a class="collapse-item" href="../odontologos/altaOdontologo.jsp">Nuevo odontólogo</a>
+                    </div>
+                </div>
+            </li>
+            
+            <!-- Nav Item - Pacientes -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePacientes"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-solid fa-tooth"></i>
+                    <span>Pacientes</span>
+                </a>
+                <div id="collapsePacientes" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="../../SvPacientes">Ver pacientes</a>
+                        <a class="collapse-item" href="../pacientes/altaPaciente.jsp">Nuevo paciente</a>
+                    </div>
+                </div>
+            </li>
+            
             <!-- Divider -->
             <hr class="sidebar-divider">
             
-              <!-- Nav Item - PERSONAS -->
+              <!-- Nav Item -HORARIOS -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseHorarios"
                     aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-solid fa-user"></i>
+                    <i class="fas fa-solid fa-clock"></i>
                     <span>Horarios</span>
                 </a>
                 <div id="collapseHorarios" class="collapse" aria-labelledby="headingUtilities"
@@ -107,6 +171,22 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="../../SvHorarios">Ver horario</a>
                         <a class="collapse-item" href="../horarios/altaHorario.jsp">Nuevo horarios</a>
+                    </div>
+                </div>
+            </li>
+            
+            <!-- Nav Item - TURNOS -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTurnos"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-solid fa-calendar"></i>
+                    <span>Turnos</span>
+                </a>
+                <div id="collapseTurnos" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="../../SvTurnos">Ver turnos</a>
+                        <a class="collapse-item" href="../turnos/altaTurno.jsp">Nuevo turno</a>
                     </div>
                 </div>
             </li>
