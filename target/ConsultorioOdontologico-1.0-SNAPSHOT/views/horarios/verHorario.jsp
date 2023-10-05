@@ -7,7 +7,7 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center mb-4">
                         <img src="../../img/dentist.png" alt="dentist" width="50px" height="50px" style="margin-right: 10px">    
-                         <h1 class="h3 mb-2 text-gray-800">Ver Horario</h1>
+                         <h1 class="h3 mb-2 text-gray-800">Ver Horario deportivo</h1>
                     </div>
                    
                     <!-- DataTales Example -->

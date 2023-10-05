@@ -42,7 +42,7 @@ public class SvEditarHorarios extends HttpServlet {
         
         Horarios hora = (Horarios) request.getSession().getAttribute("horaEditar"); //obteniedo datos anteriores
         
-        if ( horario_inicio != "" &&  horario_fin != ""){
+        if ( (!horario_inicio.equals("")) && (!horario_fin.equals(""))){
             
         hora.setHorario_inicio(horario_inicio); //cambiando valores de la variable de sesion
         hora.setHorario_fin(horario_fin);

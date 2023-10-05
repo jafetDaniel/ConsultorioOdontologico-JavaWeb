@@ -35,10 +35,10 @@ public class SvEditarTurnos extends HttpServlet {
          
          Turnos turno = control.traerTurno(id);
          
-           List<Odontologos> listaOdontologos = new ArrayList<Odontologos>();
+           List<Odontologos> listaOdontologos = new ArrayList();
            listaOdontologos = control.getOdontologos();
            
-           List<Pacientes> listaPacientes = new ArrayList<Pacientes>();
+           List<Pacientes> listaPacientes = new ArrayList();
            listaPacientes = control.getPacientes();
            
          
@@ -55,7 +55,7 @@ public class SvEditarTurnos extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {//editar 
         
-        String fecha_turno = request.getParameter("fecha_truno");//obteniendo valores del form
+        String fecha_turno = request.getParameter("fecha_turno");//obteniendo valores del form
         String hora_turno = request.getParameter("hora_turno");
         String tratamiento = request.getParameter("tratamiento");
         int id_odonto = Integer.parseInt(request.getParameter("id_odonto"));
@@ -78,7 +78,7 @@ public class SvEditarTurnos extends HttpServlet {
                 }
             }
             
-        if (hora_turno != "" && tratamiento != ""  && date != null) {
+        if ((!hora_turno.equals("")) && (!tratamiento.equals(""))  && date != null) {
             
              if (id_odonto  > 0) {
                   Odontologos odonto = control.traerOdontologo(id_odonto);

@@ -8,6 +8,7 @@ import logica.Odontologos;
 import logica.Pacientes;
 import logica.Personas;
 import logica.Responsables;
+import logica.Secretarios;
 import logica.Turnos;
 import logica.Usuarios;
 import persistencia.exceptions.NonexistentEntityException;
@@ -18,7 +19,7 @@ public class ControladoraPersistencia {
     PacientesJpaController pacJPA = new PacientesJpaController();
     PersonasJpaController perJPA = new PersonasJpaController();
     ResponsablesJpaController respJPA = new ResponsablesJpaController();
-    //SecretariosJpaController secreJPA = new SecretariosJpaController();
+    SecretariosJpaController secreJPA = new SecretariosJpaController();
     TurnosJpaController turnoJPA = new TurnosJpaController();
     UsuariosJpaController usuJPA = new UsuariosJpaController();
 
@@ -197,6 +198,31 @@ public class ControladoraPersistencia {
     public void editarPaciente(Pacientes pacient) {
         try {
             pacJPA.edit(pacient);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    //Secretarios
+     public void crearSecretario(Secretarios secre) {
+        secreJPA.create(secre);
+    }
+    public List<Secretarios> getSecretarios() {
+        return secreJPA.findSecretariosEntities();
+    }
+    public void borrarSecretario(int id) {
+        try {
+            secreJPA.destroy(id);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public Secretarios traerSecretario(int id) {
+        return secreJPA.findSecretarios(id);
+    }
+    public void editarSecretario(Secretarios secre) {
+        try {
+            secreJPA.edit(secre);
         } catch (Exception ex) {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }

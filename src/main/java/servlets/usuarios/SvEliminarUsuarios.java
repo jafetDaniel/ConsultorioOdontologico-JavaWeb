@@ -31,8 +31,10 @@ public class SvEliminarUsuarios extends HttpServlet {
             throws ServletException, IOException {
        int id = Integer.parseInt(request.getParameter("id_delete")); //obtener id(campo) del form
        
+       if(id > 0){
        control.borrarUsuario(id); //borrar usuario de la bd
        response.sendRedirect("SvUsuarios");
+        }
     }
 
     @Override

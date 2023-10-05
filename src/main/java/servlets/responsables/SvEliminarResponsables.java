@@ -28,8 +28,10 @@ public class SvEliminarResponsables extends HttpServlet {
             throws ServletException, IOException {
        int id = Integer.parseInt(request.getParameter("id_delete")); //obtener id(campo) del form
        
+        if(id > 0){
        control.borrarResponsable(id); //borrar de la bd
        response.sendRedirect("SvResponsables");
+        }
     }
 
     @Override

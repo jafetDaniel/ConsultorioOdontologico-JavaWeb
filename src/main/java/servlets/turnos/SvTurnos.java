@@ -32,7 +32,7 @@ public class SvTurnos extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-          List<Turnos> listaTurnos = new ArrayList<Turnos>();
+        List<Turnos> listaTurnos = new ArrayList();
         listaTurnos = control.getTurnos();
         
         HttpSession miSesion = request.getSession(); //llamando a la sesion
@@ -52,7 +52,7 @@ public class SvTurnos extends HttpServlet {
         int id_odonto = Integer.parseInt(request.getParameter("id_odonto"));
         int id_pacient = Integer.parseInt(request.getParameter("id_pacient"));
        
-        if (fecha_turno != "" && hora_turno != "" && tratamiento != ""  && id_odonto >0 && id_pacient >0){
+        if ((!fecha_turno.equals("")) && (!hora_turno.equals("")) && (!tratamiento.equals(""))  && id_odonto >0 && id_pacient >0){
             
              Odontologos odonto = control.traerOdontologo(id_odonto);
              Pacientes pacient = control.traerPaciente(id_pacient);

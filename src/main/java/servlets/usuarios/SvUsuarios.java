@@ -25,7 +25,7 @@ public class SvUsuarios extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        List<Usuarios> listaUsuarios = new ArrayList<Usuarios>();
+        List<Usuarios> listaUsuarios = new ArrayList();
         listaUsuarios = control.getUsuarios();
         
         HttpSession miSesion = request.getSession(); //llamando a la sesion
@@ -42,7 +42,7 @@ public class SvUsuarios extends HttpServlet {
         String contrasenia = request.getParameter("contrasenia");
         String rol = request.getParameter("rol");
        
-        if (nombre_usuario != "" && contrasenia!= "" && rol != "" ){
+        if ((!nombre_usuario.equals("")) && (!contrasenia.equals("")) && (!rol.equals("")) ){
             
         control.crearUsuario(nombre_usuario, contrasenia, rol); //creando usuario
         response.sendRedirect("SvUsuarios");

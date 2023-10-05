@@ -42,7 +42,7 @@ public class SvEditarUsuarios extends HttpServlet {
         
         Usuarios usu = (Usuarios) request.getSession().getAttribute("usuEditar"); //obteniedo datos anteriores
         
-        if (nombre_usuario != "" && contrasenia != "" && rol != "" ){ 
+        if ((!nombre_usuario.equals("")) && (!contrasenia.equals("")) && (!rol.equals("")) ){ 
           
         usu.setNombre_usuario(nombre_usuario); //cambiando valores de la variable de sesion
         usu.setContrasenia(contrasenia);

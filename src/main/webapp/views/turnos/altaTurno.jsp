@@ -16,10 +16,10 @@
                     <%                        
                         Controladora control = new Controladora();
                         
-                        List<Odontologos> listaOdonto = new ArrayList<Odontologos>();
+                        List<Odontologos> listaOdonto = new ArrayList();
                         listaOdonto = control.getOdontologos();
                         
-                        List<Pacientes> listaPacient = new ArrayList<Pacientes>();
+                        List<Pacientes> listaPacient = new ArrayList();
                         listaPacient = control.getPacientes();
                     %>
 
@@ -54,7 +54,7 @@
                             <div class="mb-3">
                             <label class="form-label">Paciente</label>
                             
-                            <select class="form-control" name="id_persona" style="width: 300px">
+                            <select class="form-control" name="id_pacient" style="width: 300px">
                                 <option value="0">seleccione paciente</option>
                                 <%   for (Pacientes pacient : listaPacient) { %>
                                    <option value="<%=pacient.getId_paciente()%>"><%=pacient.getPersona().getNombre() +" "+pacient.getPersona().getApellido()%></option>

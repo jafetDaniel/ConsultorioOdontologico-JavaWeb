@@ -29,7 +29,7 @@ public class SvPersonas extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException { //mostrar lista de personas
         
-        List<Personas> listaPersonas = new ArrayList<Personas>();
+        List<Personas> listaPersonas = new ArrayList();
         listaPersonas = control.getPersonas();
         
         HttpSession miSesion = request.getSession(); //llamando a la sesion
@@ -50,7 +50,7 @@ public class SvPersonas extends HttpServlet {
         String direccion = request.getParameter("direccion");
         String fecha_nac = request.getParameter("fecha_nac");
         
-        if (dni != "" && nombre !="" && apellido !="" && telefono != "" && direccion != "" && fecha_nac != ""){
+        if ((!dni.equals("")) && (!nombre.equals("")) && (!apellido.equals("")) && (!telefono.equals("")) && (!direccion.equals("")) && (!fecha_nac.equals(""))){
             
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd"); //formato actual (y de BD)
             Date date = null;

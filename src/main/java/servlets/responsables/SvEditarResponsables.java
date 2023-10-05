@@ -29,7 +29,7 @@ public class SvEditarResponsables extends HttpServlet {
          
          Responsables resp = control.traerResponsable(id);
          
-          List<Personas> listaPersonas = new ArrayList<Personas>();
+          List<Personas> listaPersonas = new ArrayList();
           listaPersonas = control.getPersonas();
          
          HttpSession misesion = request.getSession(); //llamando a la sesion
@@ -51,7 +51,7 @@ public class SvEditarResponsables extends HttpServlet {
         Responsables resp = (Responsables) request.getSession().getAttribute("respEditar");//obteniedo datos anteriores
        
             
-        if (tipo_resp != "") {
+        if (!tipo_resp.equals("")) {
             
             if (id_persona  > 0) {
                   Personas per = control.traerPersona(id_persona);

@@ -14,18 +14,17 @@
                     <%  Turnos turno = (Turnos) request.getSession().getAttribute("turnoEditar"); 
                         SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy"); //dar formato a fecha
                         
-                        List<Odontologos> listOdonto = (List) request.getSession().getAttribute("selecOdontolos"); 
+                        List<Odontologos> listOdonto = (List) request.getSession().getAttribute("selecOdontologos"); 
                         List <Pacientes> listPac = (List) request.getSession().getAttribute("selecPacientes");
                     %>
                     
                     <form action="../../SvEditarTurnos" method="POST">
                         
                         <div class="mb-3">
-                            <label class="form-label">Fecha de Turno</label>
+                            <% if (turno.getFecha_turno() != null) { %>
+                            <label class="form-label">Fecha de Turno: <b><%=formato.format(turno.getFecha_turno())%></b></label>
+                             <% } %>
                             <div>
-                                <% if (turno.getFecha_turno() != null) { %>
-                                   <label class="form-label"><%=formato.format(turno.getFecha_turno())%></label>
-                                <% } %>
                                 <input type="date" class="form-control" name="fecha_turno" style="width: 150px; display:inline;">
                             </div>
                         </div>
@@ -41,10 +40,8 @@
                         </div>
                         
                         <div class="mb-3">
-                            <label class="form-label">Odontólogo</label>
+                            <label class="form-label">Odontólogo: <b><%=turno.getOdonto().getPersona().getNombre()+ " " + turno.getOdonto().getPersona().getApellido()%></b></label>
                             <div>
-                                <label class="form-label"><%=turno.getOdonto().getPersona().getNombre()+ " " + turno.getOdonto().getPersona().getApellido()%></label>
-                            
                                 <select class="form-control" name="id_odonto" style="width: 500px; display:inline;">
                                 <option value="0">cambiar odontólogo</option>
                                 <%   for (Odontologos odonto: listOdonto) { %>
@@ -55,16 +52,14 @@
                         </div>
                             
                             <div class="mb-3">
-                            <label class="form-label">Paciente</label>      
+                            <label class="form-label">Paciente: <b><%=turno.getPacient().getPersona().getNombre()+ " " + turno.getPacient().getPersona().getApellido()%></b></label>      
                             <div>
-                                <label class="form-label"><%=turno.getPacient().getPersona().getNombre()+ " " + turno.getPacient().getPersona().getApellido()%></label>
-     
-                            <select class="form-control" name="id_persona" style="width: 300px; display: inline;">
+                              <select class="form-control" name="id_pacient" style="width: 300px; display: inline;">
                                 <option value="0">cambiar paciente</option>
                                 <%   for (Pacientes pacient : listPac) { %>
                                    <option value="<%=pacient.getId_paciente()%>"><%=pacient.getPersona().getNombre() +" "+pacient.getPersona().getApellido()%></option>
                                 <% } %>
-                            </select>
+                              </select>
                             </div>
                         </div>
                         

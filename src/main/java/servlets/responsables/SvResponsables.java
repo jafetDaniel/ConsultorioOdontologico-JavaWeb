@@ -26,7 +26,7 @@ public class SvResponsables extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        List<Responsables> listaResponsables = new ArrayList<Responsables>();
+        List<Responsables> listaResponsables = new ArrayList();
         listaResponsables = control.getResponsables();
 
         HttpSession miSesion = request.getSession(); //llamando a la sesion
@@ -43,7 +43,7 @@ public class SvResponsables extends HttpServlet {
         int  id_persona  = Integer.parseInt(request.getParameter("id_persona"));
         String tipo_resp = request.getParameter("tipo_resp");
       
-        if (tipo_resp != "" && id_persona > 0){
+        if ( (!tipo_resp.equals("")) && id_persona > 0){
          
         Personas per = control.traerPersona(id_persona);
             

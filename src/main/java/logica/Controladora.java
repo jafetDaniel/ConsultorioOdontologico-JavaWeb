@@ -172,13 +172,13 @@ public class Controladora {
     }
     
     //PACIENTES
-    public void crearPaciente(boolean tiene_SM, String tipo_sangre, Responsables responsable, List<Turnos> lista_turnos, Personas persona){
+    public void crearPaciente(boolean tiene_SM, String tipo_sangre, Responsables responsable, Personas persona){
         Pacientes pacient = new Pacientes();
         
         pacient.setTiene_SM(tiene_SM);
         pacient.setTipo_sangre(tipo_sangre);
         pacient.setResponsable(responsable);
-        pacient.setLista_turnos(lista_turnos);
+        //pacient.setLista_turnos(lista_turnos);
         pacient.setPersona(persona);
         
         controlPersis.crearPaciente(pacient);
@@ -194,6 +194,30 @@ public class Controladora {
     }
     public void editarPaciente(Pacientes pacient) {
         controlPersis.editarPaciente(pacient);
+    }
+    
+    
+    //SECRETARIOS
+    public void crearSecretario(String sector, Usuarios usuario, Personas persona){
+        Secretarios secre = new Secretarios();
+        
+        secre.setSector(sector);
+        secre.setUsuario(usuario);
+        secre.setPersona(persona);
+        
+        controlPersis.crearSecretario(secre);
+    }
+    public List<Secretarios> getSecretarios() {
+        return controlPersis.getSecretarios();
+    }
+    public void borrarSecretario(int id) {
+        controlPersis.borrarSecretario(id);
+    }
+    public Secretarios traerSecretario(int id) {
+        return controlPersis.traerSecretario(id);
+    }
+    public void editarSecretario(Secretarios secre) {
+        controlPersis.editarSecretario(secre);
     }
    
 }

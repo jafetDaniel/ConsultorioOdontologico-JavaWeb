@@ -9,8 +9,11 @@
                     </div>
                     
                     <div style="text-align: center">
-                         <img src="img/dentist.png" alt="dentist" width="500px" height="500px">
+                        <video width="1350px" autoplay loop style="border-radius:8px">
+                            <source src="img/teeth.mp4" type="video/mp4">
+                        </video>
                     </div>
+                    
                 </div>
                 <!-- /.container-fluid -->
 <%@include file="footer.jsp"%>

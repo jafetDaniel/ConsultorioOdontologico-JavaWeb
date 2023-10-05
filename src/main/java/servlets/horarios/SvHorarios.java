@@ -25,7 +25,7 @@ public class SvHorarios extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        List<Horarios> listaHorarios = new ArrayList<Horarios>();
+        List<Horarios> listaHorarios = new ArrayList();
         listaHorarios = control.getHorarios();
         
         HttpSession miSesion = request.getSession(); //llamando a la sesion

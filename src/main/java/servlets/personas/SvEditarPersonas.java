@@ -64,7 +64,7 @@ public class SvEditarPersonas extends HttpServlet {
                 }
             }
             
-        if (dni != "" && nombre != "" && apellido != "" && telefono != "" && direccion != "" && date != null) {
+        if ((!dni.equals("")) && (!nombre.equals("")) && (!apellido.equals("")) && (!telefono.equals("")) && (!direccion.equals("")) && (date != null) ) {
             per.setDni(dni); //cambiando valores SOLO en la variable de sesion
             per.setNombre(nombre);
             per.setApellido(apellido);

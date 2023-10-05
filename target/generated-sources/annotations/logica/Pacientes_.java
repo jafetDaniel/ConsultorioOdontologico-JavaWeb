@@ -8,7 +8,7 @@ import logica.Personas;
 import logica.Responsables;
 import logica.Turnos;
 
-@Generated(value="EclipseLink-2.7.10.v20211216-rNA", date="2023-09-10T16:53:59")
+@Generated(value="EclipseLink-2.7.10.v20211216-rNA", date="2023-10-05T15:14:46")
 @StaticMetamodel(Pacientes.class)
 public class Pacientes_ { 
 

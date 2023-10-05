@@ -28,7 +28,7 @@ public class SvOdontologos extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        List<Odontologos> listaOdonto = new ArrayList<Odontologos>();
+        List<Odontologos> listaOdonto = new ArrayList();
         listaOdonto = control.getOdontologos();
 
         HttpSession miSesion = request.getSession(); //llamando a la sesion

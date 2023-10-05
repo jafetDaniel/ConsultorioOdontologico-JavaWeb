@@ -28,8 +28,10 @@ public class SvEliminarTurnos extends HttpServlet {
             throws ServletException, IOException {
        int id = Integer.parseInt(request.getParameter("id_delete")); //obtener id(campo) del form
        
+        if(id > 0){
        control.borrarTurno(id); //borrar de la bd
        response.sendRedirect("SvTurnos");
+        }
     }
 
     @Override

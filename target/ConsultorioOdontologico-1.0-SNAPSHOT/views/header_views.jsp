@@ -34,7 +34,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../../index.jsp">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-regular fa-tooth"></i>
                 </div>
@@ -113,7 +113,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSecretarios"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-solid fa-briefcase"></i>
-                    <span>Secreatarios</span>
+                    <span>Secretarios</span>
                 </a>
                 <div id="collapseSecretarios" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
