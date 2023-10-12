@@ -1,2 +1,2 @@
 # ConsultorioOdontologico-JavaWeb
-sistema web realizado en Java
+sistema web realizado en Java utilizando tecnologías como JSP, Servlets, JPA, Servidor Tomcat
