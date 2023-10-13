@@ -14,18 +14,15 @@ import logica.Usuarios;
 public class SvLogin extends HttpServlet {
      Controladora control = new Controladora();
 
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     }
-
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -40,8 +37,10 @@ public class SvLogin extends HttpServlet {
             HttpSession misession = request.getSession(true);
             misession.setAttribute("id_usuario", validacion.getId_usuario());
             misession.setAttribute("nombre_usuario", validacion.getNombre_usuario());
+            misession.setAttribute("rol", validacion.getRol());
             
             response.sendRedirect("index.jsp");
+                 
         }else{
              response.sendRedirect("login.jsp");
         }

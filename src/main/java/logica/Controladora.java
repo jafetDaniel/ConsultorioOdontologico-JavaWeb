@@ -22,7 +22,6 @@ public class Controladora {
                  }
              }
          }
-        // System.out.println(ingreso);
          return ingreso;
     }
     // USUARIOS

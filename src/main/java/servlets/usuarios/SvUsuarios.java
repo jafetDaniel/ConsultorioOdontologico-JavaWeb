@@ -42,7 +42,7 @@ public class SvUsuarios extends HttpServlet {
         String contrasenia = request.getParameter("contrasenia");
         String rol = request.getParameter("rol");
        
-        if ((!nombre_usuario.equals("")) && (!contrasenia.equals("")) && (!rol.equals("")) ){
+        if ((!nombre_usuario.equals("")) && (!contrasenia.equals("")) && (!rol.equals("0")) ){
             
         control.crearUsuario(nombre_usuario, contrasenia, rol); //creando usuario
         response.sendRedirect("SvUsuarios");

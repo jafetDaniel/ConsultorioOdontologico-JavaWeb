@@ -23,19 +23,14 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>DNI</th>
                                             <th>Nombre</th>
-                                            <th>Apellido</th>
-                                            <th>Teléfono</th>
-                                            <th>Dirección</th>
-                                            <th>Fecha de Nacimiento</th>
+                                            <th>Apellido</th>   
                                             <th>Tipo de Responsable</th>
                                             <th style="width: 210px;">Acción</th>
                                         </tr>
                                     </thead>
                                     <% 
                                       List<Responsables> listaResponsables = (List) request.getSession().getAttribute("listaResponsables");//obtener una variable de la session
-                                      SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy"); //dar formato a fecha
                                     %>
                                     <tbody>
                                         <% 
@@ -43,16 +38,8 @@
                                         %>
                                         <tr>
                                             <td><%=resp.getId_responsable()%></td>
-                                            <td><%=resp.getPersona().getDni()%></td>
                                             <td><%=resp.getPersona().getNombre() %></td>
-                                            <td><%=resp.getPersona().getApellido()%></td>
-                                            <td><%=resp.getPersona().getTelefono()%></td>
-                                            <td><%=resp.getPersona().getDireccion()%></td>
-                                            <td>
-                                                <% if (resp.getPersona().getFecha_nac() != null) { %>
-                                                <%=formato.format(resp.getPersona().getFecha_nac())%>
-                                                <% } %>
-                                            </td>
+                                            <td><%=resp.getPersona().getApellido()%></td>  
                                             <td><%=resp.getTipo_resp()%></td>
                                             
                                             <td style="display:flex; width:230px;">

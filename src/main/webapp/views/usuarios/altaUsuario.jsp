@@ -18,7 +18,13 @@
                         </div>
                          <div class="mb-3">
                             <label class="form-label">Rol</label>
-                            <input type="text" class="form-control" name="rol" required style="width: 500px">
+                            
+                            <select class="form-control" name="rol" style="width: 300px">
+                                <option value="0">seleccione rol</option>
+                                <option value="admin">Administrador</option>
+                                <option value="odontologo">Odontólogo</option>
+                                <option value="secretario">Secretario</option>
+                            </select>
                         </div>
                     
                         <div class="mb-3">
