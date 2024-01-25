@@ -7,7 +7,7 @@ sistema web realizado en Java utilizando tecnologías como JSP, Servlets, JPA, S
 
 Descripción:
 <p>
-  Este proyecto tiene las funcionalidades de la gestión de pacientes y trabajadore del consultorio, agendar y administrar citas, ademas de contar con distintos roles de usuarios para el acceso.
+  Este proyecto tiene las funcionalidades de la gestión de pacientes y trabajadore del consultorio, agendar y administrar citas y horarios, ver turnos, ademas de contar con distintos roles de usuarios para el acceso.
 </p>
 
 <img src="src/main/webapp/img/odonto1.png">
