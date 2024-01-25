@@ -1,7 +1,7 @@
 # Sistema para la gestión de un consultorio odontológico
 sistema web realizado en Java utilizando tecnologías como JSP, Servlets, JPA, Servidor Tomcat
 <ul>
-  <li>Otras tecnologías: HTML, CSS, JS, Bootstrap</li>
+  <li>Otras tecnologías utilizadas: HTML, CSS, JS, Bootstrap</li>
   <li>Base de datos MySQL</li>
 </ul>
 
